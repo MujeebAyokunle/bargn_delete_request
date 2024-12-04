@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Deletion Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md" id="form-container">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-4">Request Account Deletion</h1>
+    <p class="text-sm text-gray-600 mb-6">
+      Please provide your email address and the reason you'd like to delete your account. We will contact you through the email you provide.
+    </p>
+    
+    <form id="deleteForm" class="space-y-4">
+      <!-- Email Input -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required 
+          placeholder="Enter your email"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+      </div>
+
+      <!-- Reason for Deletion -->
+      <div>
+        <label for="reason" class="block text-sm font-medium text-gray-700">Reason for Deletion</label>
+        <textarea 
+          id="reason" 
+          name="reason" 
+          required 
+          placeholder="Why would you like to delete your account?" 
+          rows="4"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button 
+          type="submit" 
+          class="w-full inline-flex justify-center items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Submit Request
+        </button>
+      </div>
+    </form>
+    
+    <!-- Loader -->
+    <div id="loader" class="hidden flex justify-center items-center">
+      <svg class="animate-spin h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+      </svg>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="hidden text-green-600 font-medium text-center mt-4">
+      Request Submitted Successfully!
+    </div>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById('deleteForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent page reload
+      
+      // Hide form and show loader
+      const form = document.getElementById('deleteForm');
+      const loader = document.getElementById('loader');
+      const notification = document.getElementById('notification');
+      
+      form.classList.add('hidden');
+      loader.classList.remove('hidden');
+      
+      // Simulate a delay of 2 seconds
+      setTimeout(() => {
+        loader.classList.add('hidden'); // Hide loader
+        notification.classList.remove('hidden'); // Show notification
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
